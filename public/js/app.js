@@ -8,7 +8,7 @@ const fetchForecast = (locationString) => {
     messageOne.textContent = 'loading...'
     messageTwo.textContent = ''
 
-    fetch(`http://localhost:3000/weather?address=${locationString}`).then((res) => {
+    fetch(`/weather?address=${locationString}`).then((res) => {
         res.json().then(({ error, location, forecast }) => {
 
             if (error) {
