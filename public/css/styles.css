@@ -37,6 +37,12 @@ header a {
     flex-grow: 1;
 }
 
+form{
+    display: flex;
+    justify-content: center;
+
+}
+
 
 input{
     border: 1px solid #cccccc;
@@ -48,4 +54,56 @@ button {
     background: #888888;
     color: white;
     padding: 8px;
+}
+
+i{
+    font-size: 4rem;
+}
+
+#forecast-container{
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    grid-gap: 2rem;
+    margin: 1rem;
+    align-items: center;
+    
+}
+
+#loading-container{
+    display: flex;
+    justify-content: center;
+}
+
+.fas.fa-spinner{
+    font-size: 2rem;
+ -webkit-animation-name: spin;
+    -webkit-animation-duration: 4000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 4000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 4000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;   
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
 }

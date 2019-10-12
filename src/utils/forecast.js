@@ -12,7 +12,10 @@ const forecast = (latitude, longitude, callback) => {
         }
         else {
             const currently = body.currently
-            callback(undefined, `${body.daily.data[0].summary} It is currently ${currently.temperature} degrees celsius. There is currently a ${currently.precipProbability}% chance of rain.`)
+            callback(undefined, {
+                status: `${body.daily.data[0].summary} It is currently ${currently.temperature} degrees celsius. There is currently a ${currently.precipProbability}% chance of rain.`,
+                icon: currently.icon,
+            })
 
         }
 
