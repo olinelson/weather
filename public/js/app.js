@@ -6,7 +6,7 @@ const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
 const weatherIcon = document.querySelector('#weather-icon')
-const loadingContainer = document.querySelector('#loading-container')
+const $loadingContainer = document.querySelector('#loading-container')
 
 const getWeatherIcon = (iconName) => {
     switch (iconName) {
@@ -46,7 +46,7 @@ const getWeatherIcon = (iconName) => {
 }
 
 const fetchForecast = (locationString) => {
-    loadingContainer.innerHTML = `<i class="fas fa-spinner"></i>`
+    $loadingContainer.innerHTML = `<i class="fas fa-spinner"></i>`
     messageOne.textContent = ''
     messageTwo.textContent = ''
     weatherIcon.className = ''
@@ -57,14 +57,14 @@ const fetchForecast = (locationString) => {
             if (error) {
                 messageOne.textContent = error
                 messageTwo.textContent = ""
-                loadingContainer.innerHTML = ``
+                $loadingContainer.innerHTML = ``
             }
 
             else {
                 messageOne.textContent = location
                 messageTwo.textContent = forecast.status
                 getWeatherIcon(forecast.icon)
-                loadingContainer.innerHTML = ``
+                $loadingContainer.innerHTML = ``
             }
 
 
@@ -85,7 +85,7 @@ const fetchForecastFromLocation = () => {
     $getLocationButton.setAttribute('disabled', 'disabled')
     search.value = 'Current Location'
 
-    loadingContainer.innerHTML = `<i class="fas fa-spinner"></i>`
+    $loadingContainer.innerHTML = `<i class="fas fa-spinner"></i>`
     messageOne.textContent = ''
     messageTwo.textContent = ''
     weatherIcon.className = ''
@@ -102,14 +102,14 @@ const fetchForecastFromLocation = () => {
                 if (error) {
                     messageOne.textContent = error
                     messageTwo.textContent = ""
-                    loadingContainer.innerHTML = ``
+                    $loadingContainer.innerHTML = ``
                 }
 
                 else {
                     messageOne.textContent = location
                     messageTwo.textContent = forecast.status
                     getWeatherIcon(forecast.icon)
-                    loadingContainer.innerHTML = ``
+                    $loadingContainer.innerHTML = ``
                 }
 
 
@@ -121,7 +121,7 @@ const fetchForecastFromLocation = () => {
     $getLocationButton.setAttribute('disabled', 'disabled')
     search.value = 'Current Location'
 
-    loadingContainer.innerHTML = `<i class="fas fa-spinner"></i>`
+    $loadingContainer.innerHTML = `<i class="fas fa-spinner"></i>`
     messageOne.textContent = ''
     messageTwo.textContent = ''
     weatherIcon.className = ''
@@ -138,14 +138,14 @@ const fetchForecastFromLocation = () => {
                 if (error) {
                     messageOne.textContent = error
                     messageTwo.textContent = ""
-                    loadingContainer.innerHTML = ``
+                    $loadingContainer.innerHTML = ``
                 }
 
                 else {
                     messageOne.textContent = location
                     messageTwo.textContent = forecast.status
                     getWeatherIcon(forecast.icon)
-                    loadingContainer.innerHTML = ``
+                    $loadingContainer.innerHTML = ``
                 }
 
 
