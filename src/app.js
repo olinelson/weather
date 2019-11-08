@@ -49,6 +49,20 @@ app.get('/weather', (req, res) => {
 
 })
 
+app.get('/forecast', (req, res) => {
+    let latitude = req.query.latitude
+    let longitude = req.query.longitude
+
+    forecast(latitude, longitude, (error, forecast) => {
+        if (error) return console.log(error)
+        res.send(
+            {
+                forecast
+            }
+        )
+    })
+})
+
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About',

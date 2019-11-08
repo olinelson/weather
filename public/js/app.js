@@ -1,4 +1,6 @@
 const weatherForm = document.querySelector('form')
+const $searchButton = document.querySelector('#search-button')
+const $getLocationButton = document.querySelector('#get-location-button')
 const search = document.querySelector('input')
 
 const messageOne = document.querySelector('#message-1')
@@ -72,8 +74,95 @@ const fetchForecast = (locationString) => {
 
 }
 
-weatherForm.addEventListener('submit', (event) => {
+$searchButton.addEventListener('click', (event) => {
     event.preventDefault()
     const locationString = search.value
     fetchForecast(locationString)
 })
+
+const fetchForecastFromLocation = () => {
+
+    $getLocationButton.setAttribute('disabled', 'disabled')
+    search.value = 'Current Location'
+
+    loadingContainer.innerHTML = `<i class="fas fa-spinner"></i>`
+    messageOne.textContent = ''
+    messageTwo.textContent = ''
+    weatherIcon.className = ''
+
+    navigator.geolocation.getCurrentPosition((position) => {
+
+        latitude = position.coords.latitude
+        longitude = position.coords.longitude
+
+
+        fetch(`/forecast?latitude=${latitude}&longitude=${longitude}`).then((res) => {
+            res.json().then(({ error, location, forecast }) => {
+                $getLocationButton.removeAttribute('disabled')
+                if (error) {
+                    messageOne.textContent = error
+                    messageTwo.textContent = ""
+                    loadingContainer.innerHTML = ``
+                }
+
+                else {
+                    messageOne.textContent = location
+                    messageTwo.textContent = forecast.status
+                    getWeatherIcon(forecast.icon)
+                    loadingContainer.innerHTML = ``
+                }
+
+
+            })
+
+        })
+
+    })
+    $getLocationButton.setAttribute('disabled', 'disabled')
+    search.value = 'Current Location'
+
+    loadingContainer.innerHTML = `<i class="fas fa-spinner"></i>`
+    messageOne.textContent = ''
+    messageTwo.textContent = ''
+    weatherIcon.className = ''
+
+    navigator.geolocation.getCurrentPosition((position) => {
+
+        latitude = position.coords.latitude
+        longitude = position.coords.longitude
+
+
+        fetch(`/forecast?latitude=${latitude}&longitude=${longitude}`).then((res) => {
+            res.json().then(({ error, location, forecast }) => {
+                $getLocationButton.removeAttribute('disabled')
+                if (error) {
+                    messageOne.textContent = error
+                    messageTwo.textContent = ""
+                    loadingContainer.innerHTML = ``
+                }
+
+                else {
+                    messageOne.textContent = location
+                    messageTwo.textContent = forecast.status
+                    getWeatherIcon(forecast.icon)
+                    loadingContainer.innerHTML = ``
+                }
+
+
+            })
+
+        })
+
+    })
+}
+
+$getLocationButton.addEventListener('click', (event) => {
+    event.preventDefault()
+    fetchForecastFromLocation()
+})
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    fetchForecastFromLocation()
+});
+
+

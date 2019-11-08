@@ -16,8 +16,12 @@
         {{>header}}
 
         <form action="">
-            <input placeholder="Sydney, NSW, Australia" type="text">
-            <button>Search</button>
+            <div class="faux-input">
+                <input placeholder="Sydney, NSW, Australia" type="text">
+                <i id='get-location-button' class="fas fa-location-arrow"></i>
+            </div>
+            <button id='search-button'>Search </button>
+
         </form>
 
         <div id="forecast-container">
